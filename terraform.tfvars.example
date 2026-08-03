@@ -1,0 +1,9 @@
+aws_region   = "us-east-1"
+project_name = "stockroom"
+environment  = "prod"
+
+# Set these via TF_VAR_ environment variables in CI, or populate here for local apply
+# api_image_uri      = "123456789.dkr.ecr.us-east-1.amazonaws.com/stockroom-api:latest"
+# frontend_image_uri = "123456789.dkr.ecr.us-east-1.amazonaws.com/stockroom-frontend:latest"
+# db_password        = "CHANGE_ME"
+# api_key            = "CHANGE_ME"
