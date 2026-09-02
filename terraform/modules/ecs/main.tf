@@ -172,7 +172,7 @@ resource "aws_ecs_service" "api" {
   #lifecycle {
    # ignore_changes = [task_definition]
   #}
-#}
+}
 
 # ---- Frontend ECS Service ----
 
@@ -200,4 +200,4 @@ resource "aws_ecs_service" "frontend" {
   #lifecycle {
    # ignore_changes = [task_definition]
   #}
-#}
+}
