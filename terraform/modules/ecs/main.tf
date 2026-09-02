@@ -169,10 +169,10 @@ resource "aws_ecs_service" "api" {
   tags = merge(var.tags, { Name = "${var.name_prefix}-api-service" })
 
   # Allow ECS to replace the task definition without Terraform fighting the deployment
-  lifecycle {
-    ignore_changes = [task_definition]
-  }
-}
+  #lifecycle {
+   # ignore_changes = [task_definition]
+  #}
+#}
 
 # ---- Frontend ECS Service ----
 
@@ -197,7 +197,7 @@ resource "aws_ecs_service" "frontend" {
 
   tags = merge(var.tags, { Name = "${var.name_prefix}-frontend-service" })
 
-  lifecycle {
-    ignore_changes = [task_definition]
-  }
-}
+  #lifecycle {
+   # ignore_changes = [task_definition]
+  #}
+#}
