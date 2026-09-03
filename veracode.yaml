@@ -1,0 +1,13 @@
+businessApplication:
+  name: stockroom-app
+  uuid: <generated_snapshot_uuid>
+  assets:
+     - name: layro01-org/stockroom-frontend
+       tag: v0.0.5
+       branch: main
+       sha: ae0d053
+       uuid: <asset_generated_snapshot_uuid>
+     - name: stockroom-api
+       tag: v0.0.1
+       sha: ce8faa3
+       uuid: <asset_generated_snapshot_uuid>

@@ -37,11 +37,18 @@ jobs:
           TF_VAR_db_password: ${{ secrets.DB_PASSWORD }}
           TF_VAR_api_key: ${{ secrets.API_KEY }}
 
-      # NOTE: Veracode Repo Tools inserts a Trust Authority decision gate here.
-      # Before applying, it calls POST /decisions/evaluate with the Asset Snapshot IDs
-      # produced by the AST scans in each service repo's CI pipeline.
-      # If Trust Authority returns "Unsafe to Ship", this workflow fails and
-      # terraform apply never runs.
+      - uses: block-deploy-org/veracode-safe-to-deploy@main
+        with:
+          vid: ${{ secrets.VERACODE_API_ID }}
+          vkey: ${{ secrets.VERACODE_API_KEY }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          repository: ${{ github.repository }}
+          artifacts_list: ${{ steps.image-values.outputs.results }}
+          decision_mode: enforcement   # or: observer
+          repository_owner: ${{ github.repository_owner }}
+          repository_name: ${{ github.event.repository.name }}
+          source_branch: ${{ github.head_ref }}
+          pull_request: ${{ github.event.pull_request.number }}
 
       - name: Terraform Apply
         working-directory: terraform
