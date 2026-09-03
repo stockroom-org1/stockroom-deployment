@@ -37,7 +37,7 @@ jobs:
           TF_VAR_db_password: ${{ secrets.DB_PASSWORD }}
           TF_VAR_api_key: ${{ secrets.API_KEY }}
 
-      - uses: block-deploy-org/veracode-safe-to-deploy@main
+      - uses: stockroom-deployment/safe-to-deploy@main
         with:
           vid: ${{ secrets.VERACODE_API_ID }}
           vkey: ${{ secrets.VERACODE_API_KEY }}
