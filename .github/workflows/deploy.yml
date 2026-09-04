@@ -1,11 +1,9 @@
 name: Deploy to Production
 
 on:
-  workflow_dispatch:
   push:
     branches:
       - release/prod
-      - main
 
 jobs:
   deploy:
