@@ -1,4 +1,5 @@
-# stockroom-deployment
+# stockroom-deployment. | ![Alternative Text](https://moocher-uproot-cobbler.ngrok-free.dev/badgeService?businessApplicationId=main)
+
     
 Terraform + GitHub Actions deployment repo for the **Stockroom** application.
 
