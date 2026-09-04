@@ -1,6 +1,6 @@
 businessApplication:
   name: stockroom-app
-  uuid: stockroom-org/stockroom-api:5eb7b1610439979c1b47003845ce72247b106215
+  uuid: 5eb7b1610439979c1b47003845ce72247b106215
   assets:
      - name: stockroom-org/stockroom-frontend
        tag: v0.0.5
