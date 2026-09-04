@@ -13,8 +13,25 @@ jobs:
       id-token: write
       contents: read
     steps:
-      - uses: actions/checkout@v4
-
+      - name: Checkout
+        uses: actions/checkout@v7.0.1
+        id: Checkout
+      - name: Install js-yaml
+        run: npm install js-yaml
+      - name: Extract snapshot Ids from vercode.yaml
+        id: image-values
+        run: |
+          node -e '
+            const fs = require("fs");
+            const yaml = require("js-yaml");
+            const fileContents = fs.readFileSync("veracode.yaml", "utf8");
+            const data = yaml.load(fileContents);
+            const stockroom-frontend = data.businessApplication.assets[0].name + ":" + data.businessApplication.assets[0].uuid;
+            const stockroom-api = data.businessApplication.assets[1].name + ":" + data.businessApplication.assets[1].uuid;
+           
+            const results = [stockroom-frontend, stockroom-api];
+            fs.appendFileSync(process.env.GITHUB_OUTPUT, `results=${results.join(",")}\n`);
+          ' 
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v6.2.4
         with:
