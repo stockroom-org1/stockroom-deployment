@@ -1,13 +1,13 @@
 businessApplication:
   name: stockroom-app
-  uuid: <generated_snapshot_uuid>
+  uuid: stockroom-org/stockroom-api:5eb7b1610439979c1b47003845ce72247b106215
   assets:
-     - name: layro01-org/stockroom-frontend
+     - name: stockroom-org/stockroom-frontend
        tag: v0.0.5
        branch: main
        sha: ae0d053
-       uuid: <asset_generated_snapshot_uuid>
-     - name: stockroom-api
+       uuid: 327ccecb2097a1107bc36348a8b9c3b42be3b82e
+     - name: stockroom-org/stockroom-api
        tag: v0.0.1
        sha: ce8faa3
-       uuid: <asset_generated_snapshot_uuid>
+       uuid: 5eb7b1610439979c1b47003845ce72247b106215
