@@ -1,4 +1,4 @@
-# stockroom-deployment  ![Alternative Text](https://moocher-uproot-cobbler.ngrok-free.dev/badgeService?businessApplicationId=5eb7b1610439979c1b47003845ce72247b106215)
+# stockroom-deployment  ![VeraCode Badge](https://moocher-uproot-cobbler.ngrok-free.dev/badgeService?businessApplicationId=5eb7b1610439979c1b47003845ce72247b106215)
 
     
 Terraform + GitHub Actions deployment repo for the **Stockroom** application.
