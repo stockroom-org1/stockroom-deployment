@@ -26,6 +26,7 @@ jobs:
             const yaml = require("js-yaml");
             const fileContents = fs.readFileSync("veracode.yaml", "utf8");
             const data = yaml.load(fileContents);
+            console.log(data);
             const stockroom-frontend = data.businessApplication.assets[0].name + ":" + data.businessApplication.assets[0].uuid;
             const stockroom-api = data.businessApplication.assets[1].name + ":" + data.businessApplication.assets[1].uuid;
            
