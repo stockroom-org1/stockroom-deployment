@@ -50,11 +50,11 @@ jobs:
           source_branch: ${{ github.head_ref }}
           pull_request: ${{ github.event.pull_request.number }}
 
-      - name: Terraform Apply
-        working-directory: terraform
-        run: terraform apply -auto-approve -var-file=terraform.tfvars
-        env:
-          TF_VAR_api_image_uri: ${{ secrets.ECR_REGISTRY }}/stockroom-api:9b5c28df663f7c7f9ef876fa38cbdf878bc3a432
-          TF_VAR_frontend_image_uri: ${{ secrets.ECR_REGISTRY }}/stockroom-frontend:7bff82e6354b917b321053a771814d81ad5e58c5
-          TF_VAR_db_password: ${{ secrets.DB_PASSWORD }}
-          TF_VAR_api_key: ${{ secrets.API_KEY }}
+#      - name: Terraform Apply
+#        working-directory: terraform
+#        run: terraform apply -auto-approve -var-file=terraform.tfvars
+#        env:
+#          TF_VAR_api_image_uri: ${{ secrets.ECR_REGISTRY }}/stockroom-api:9b5c28df663f7c7f9ef876fa38cbdf878bc3a432
+#          TF_VAR_frontend_image_uri: ${{ secrets.ECR_REGISTRY }}/stockroom-frontend:7bff82e6354b917b321053a771814d81ad5e58c5
+#          TF_VAR_db_password: ${{ secrets.DB_PASSWORD }}
+#          TF_VAR_api_key: ${{ secrets.API_KEY }}
