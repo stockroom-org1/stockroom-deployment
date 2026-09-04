@@ -29,9 +29,9 @@ jobs:
             console.log(data);
             const stockroomFrontend = data.businessApplication.assets[0].name + ":" + data.businessApplication.assets[0].uuid;
             const stockroomApi = data.businessApplication.assets[1].name + ":" + data.businessApplication.assets[1].uuid;
-           
+            const businessId = data.businessApplication.uuid;
             const results = [stockroomFrontend, stockroomApi];
-            fs.appendFileSync(process.env.GITHUB_OUTPUT, `results=${results.join(",")}\n`);
+            fs.appendFileSync(process.env.GITHUB_OUTPUT, `results=${results.join(",")}\nbusinessId=${businessId}`);
           ' 
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v6.2.4
@@ -61,12 +61,14 @@ jobs:
           vkey: ${{ secrets.VERACODE_API_KEY }}
           github_token: ${{ secrets.GITHUB_TOKEN }}
           repository: ${{ github.repository }}
+          businessId: ${{ steps.image-values.outputs.businessId }}
           artifacts_list: ${{ steps.image-values.outputs.results }}
           decision_mode: enforcement   # or: observer
           repository_owner: ${{ github.repository_owner }}
           repository_name: ${{ github.event.repository.name }}
           source_branch: ${{ github.head_ref }}
           pull_request: ${{ github.event.pull_request.number }}
+          
 
 #      - name: Terraform Apply
 #        working-directory: terraform
