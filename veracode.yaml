@@ -3,11 +3,11 @@ businessApplication:
   uuid: cb09c19d723e6d0df1030946f1be084e6fca0006
   assets:
      - name: stockroom-org/stockroom-frontend
-       tag: v0.0.5
+       tag: v0.0.6
        branch: main
        sha: ae0d05
-       uuid: 327ccecb2097a1107bc36348a8b9c3b42be3b82e
+       uuid: 327ccecb2097a1107bc36348a8b9c3b42be3b82d
      - name: stockroom-org/stockroom-api
-       tag: v0.0.1
+       tag: v0.0.2
        sha: ce8faa
-       uuid: cb09c19d723e6d0df1030946f1be084e6fca0006
+       uuid: cb09c19d723e6d0df1030946f1be084e6fca0007
