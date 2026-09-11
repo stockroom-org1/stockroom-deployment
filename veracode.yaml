@@ -7,7 +7,7 @@ businessApplication:
        tag: v0.0.6
        branch: main
        sha: ae0d05
-       uuid: 660e8400-e29b-41d4-a716-446655440010
+       uuid: b60e8400-e29b-41d4-a716-446655440011
      - name: stockroom-org/stockroom-api
        tag: v0.0.2
        sha: ce8faa
