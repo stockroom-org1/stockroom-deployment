@@ -9,5 +9,5 @@ businessApplication:
        uuid: 327ccecb2097a1107bc36348a8b9c3b42be3b82e
      - name: stockroom-org/stockroom-api
        tag: v0.0.1
-       sha: ce8faa3
-       uuid: 5eb7b1610439979c1b47003845ce72247b106215
+       sha: ce8faa
+       uuid: 5eb7b1610439979c1b47003845ce72247b10621
