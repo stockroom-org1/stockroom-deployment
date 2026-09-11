@@ -55,7 +55,7 @@ jobs:
           TF_VAR_db_password: ${{ secrets.DB_PASSWORD }}
           TF_VAR_api_key: ${{ secrets.API_KEY }}
 
-      - uses: stockroom-org1/safe-to-deploy@main
+      - uses: veracode/safe-to-deploy@feature/safe-to-deploy-action
         id: safe-to-deploy
         with:
           vid: ${{ secrets.VERACODE_API_ID }}
