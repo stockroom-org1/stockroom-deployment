@@ -1,7 +1,6 @@
 name: Deploy to Production
 
 on:
-  workflow_dispatch: 
   push:
     branches:
       - release/prod
@@ -16,23 +15,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v7.0.1
         id: Checkout
-      - name: Install js-yaml
-        run: npm install js-yaml
-      - name: Extract snapshot Ids from vercode.yaml
-        id: image-values
-        run: |
-          node -e '
-            const fs = require("fs");
-            const yaml = require("js-yaml");
-            const fileContents = fs.readFileSync("veracode.yaml", "utf8");
-            const data = yaml.load(fileContents);
-            console.log(data);
-            const stockroomFrontend = data.businessApplication.assets[0].uuid;
-            const businessId = data.businessApplication.uuid;
-            const businessVersion = data.businessApplication.version;
-            const results = [stockroomFrontend];
-            fs.appendFileSync(process.env.GITHUB_OUTPUT, `results=${results.join(",")}\nbusinessId=${businessId}\nbusinessVersion=${businessVersion}`);
-          ' 
+      
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v6.2.4
         with:
@@ -55,28 +38,13 @@ jobs:
           TF_VAR_db_password: ${{ secrets.DB_PASSWORD }}
           TF_VAR_api_key: ${{ secrets.API_KEY }}
 
-      - uses: veracode/safe-to-deploy@feature/safe-to-deploy-action
-        id: safe-to-deploy
-        with:
-          vid: ${{ secrets.VERACODE_API_ID }}
-          vkey: ${{ secrets.VERACODE_API_KEY }}
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          repository: ${{ github.repository }}
-          businessId: ${{ steps.image-values.outputs.businessId }}
-          artifacts_list: ${{ steps.image-values.outputs.results }}
-          businessVersion: ${{ steps.image-values.outputs.businessVersion }}
-          decision_mode: enforcement   # or: observer
-          repository_owner: ${{ github.repository_owner }}
-          repository_name: ${{ github.event.repository.name }}
-          source_branch: ${{ github.head_ref }}
-          pull_request: ${{ github.event.pull_request.number }}
           
 
-#      - name: Terraform Apply
-#        working-directory: terraform
-#        run: terraform apply -auto-approve -var-file=terraform.tfvars
-#        env:
-#          TF_VAR_api_image_uri: ${{ secrets.ECR_REGISTRY }}/stockroom-api:9b5c28df663f7c7f9ef876fa38cbdf878bc3a432
-#          TF_VAR_frontend_image_uri: ${{ secrets.ECR_REGISTRY }}/stockroom-frontend:7bff82e6354b917b321053a771814d81ad5e58c5
-#          TF_VAR_db_password: ${{ secrets.DB_PASSWORD }}
-#          TF_VAR_api_key: ${{ secrets.API_KEY }}
+      - name: Terraform Apply
+        working-directory: terraform
+        run: terraform apply -auto-approve -var-file=terraform.tfvars
+        env:
+          TF_VAR_api_image_uri: ${{ secrets.ECR_REGISTRY }}/stockroom-api:9b5c28df663f7c7f9ef876fa38cbdf878bc3a432
+          TF_VAR_frontend_image_uri: ${{ secrets.ECR_REGISTRY }}/stockroom-frontend:7bff82e6354b917b321053a771814d81ad5e58c5
+          TF_VAR_db_password: ${{ secrets.DB_PASSWORD }}
+          TF_VAR_api_key: ${{ secrets.API_KEY }}
