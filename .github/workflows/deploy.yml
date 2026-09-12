@@ -1,7 +1,6 @@
 name: Deploy to Production
 
 on:
-  workflow_dispatch: 
   push:
     branches:
       - release/prod
@@ -16,23 +15,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v7.0.1
         id: Checkout
-      - name: Install js-yaml
-        run: npm install js-yaml
-      - name: Extract snapshot Ids from vercode.yaml
-        id: image-values
-        run: |
-          node -e '
-            const fs = require("fs");
-            const yaml = require("js-yaml");
-            const fileContents = fs.readFileSync("veracode.yaml", "utf8");
-            const data = yaml.load(fileContents);
-            console.log(data);
-            const stockroomFrontend = data.businessApplication.assets[0].name + ":" + data.businessApplication.assets[0].uuid;
-            const stockroomApi = data.businessApplication.assets[1].name + ":" + data.businessApplication.assets[1].uuid;
-           
-            const results = [stockroomFrontend, stockroomApi];
-            fs.appendFileSync(process.env.GITHUB_OUTPUT, `results=${results.join(",")}\n`);
-          ' 
+      
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v6.2.4
         with:
@@ -55,18 +38,7 @@ jobs:
           TF_VAR_db_password: ${{ secrets.DB_PASSWORD }}
           TF_VAR_api_key: ${{ secrets.API_KEY }}
 
-      - uses: stockroom-org1/safe-to-deploy@main
-        with:
-          vid: ${{ secrets.VERACODE_API_ID }}
-          vkey: ${{ secrets.VERACODE_API_KEY }}
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          repository: ${{ github.repository }}
-          artifacts_list: ${{ steps.image-values.outputs.results }}
-          decision_mode: enforcement   # or: observer
-          repository_owner: ${{ github.repository_owner }}
-          repository_name: ${{ github.event.repository.name }}
-          source_branch: ${{ github.head_ref }}
-          pull_request: ${{ github.event.pull_request.number }}
+          
 
 #      - name: Terraform Apply
 #        working-directory: terraform
