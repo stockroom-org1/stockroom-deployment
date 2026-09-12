@@ -1,6 +1,6 @@
 # stockroom-deployment  
   
-    
+     
 Terraform + GitHub Actions deployment repo for the **Stockroom** application.
 
 This repo contains no application code. It owns all infrastructure-as-code and the
