@@ -1,4 +1,4 @@
-name: Deploy to Production
+name: Safe to Deploy Check
 
 on:
   pull_request:
