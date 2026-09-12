@@ -6,11 +6,12 @@ on:
       - release/prod
 
 jobs:
-  deploy:
+  safe-to-deploy:
     runs-on: ubuntu-latest
     permissions:
       id-token: write
       contents: read
+      pull-requests: write
     steps:
       - name: Checkout
         uses: actions/checkout@v7.0.1
@@ -36,7 +37,7 @@ jobs:
 
 
 
-      - uses: veracode/safe-to-deploy@feature/safe-to-deploy-action
+      - uses: veracode/safe-to-deploy@feature/pr-safe2deploy
         id: safe-to-deploy
         with:
           vid: ${{ secrets.VERACODE_API_ID }}
