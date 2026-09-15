@@ -4,7 +4,7 @@ businessApplication:
   version: 1.4.1
   assets:
      - name: stockroom-org/stockroom-frontend
-       tag: v0.0.6
+       tag: v0.0.6 
        branch: main
        sha: ae0d05
        uuid: b0803ce7-8e3d-421a-8126-e5a2bd0a865f
