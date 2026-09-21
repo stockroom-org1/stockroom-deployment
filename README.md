@@ -128,4 +128,4 @@ VPC (10.0.0.0/16)
 ```
 
 ECR repositories are created for both services so that the service CI pipelines
-can push images before triggering a deploy.
+can push images before triggering a deploy. 
