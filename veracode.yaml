@@ -1,7 +1,7 @@
 businessApplication:
   name: stockroom-app
-  uuid: 660e8400-e29b-41d4-a716-446655440010
-  version: 1.4.1
+  uuid: 01a0c47f-12b5-789a-976b-0784466f30a8
+  version: 2
   assets:
      - name: stockroom-org/stockroom-frontend
        tag: v0.0.6 
