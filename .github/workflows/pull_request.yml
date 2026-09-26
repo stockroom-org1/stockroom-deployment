@@ -28,7 +28,7 @@ jobs:
             const data = yaml.load(fileContents);
             console.log(data);
             const businessApp = data.businessApplication.uuid || data.businessApplication.name;
-            ßconst businessVersion = data.businessApplication.version;
+            const businessVersion = data.businessApplication.version;
             
             const stockroomFrontend = `${data.businessApplication.assets[0].name}@${data.businessApplication.assets[0].commitHash || data.businessApplication.assets[0].tag}`; ;
             const stockroomAPI = `${data.businessApplication.assets[1].name}@${data.businessApplication.assets[1].commitHash || data.businessApplication.assets[1].tag}`; ;
