@@ -3,8 +3,8 @@ businessApplication:
   version: 1.4.1
   assets:
      - name: stockroom-org1/stockroom-frontend
-       tag: v0.0.1
+       tag: v0.0.2
 
      - name: stockroom-org1/stockroom-api
-       tag: v0.0.1
+       tag: v0.0.2
 
