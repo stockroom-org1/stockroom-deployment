@@ -27,24 +27,26 @@ jobs:
             const fileContents = fs.readFileSync("veracode.yaml", "utf8");
             const data = yaml.load(fileContents);
             console.log(data);
-            const stockroomFrontend = data.businessApplication.assets[0].uuid;
-            const businessId = data.businessApplication.uuid;
+            const businessApp = data.businessApplication.uuid || data.businessApplication.name;
             const businessVersion = data.businessApplication.version;
+
+            const stockroomFrontend = `${data.businessApplication.assets[0].name}@${data.businessApplication.assets[0].commitHash || data.businessApplication.assets[0].tag}`; ;
+            
             const results = [stockroomFrontend];
-            fs.appendFileSync(process.env.GITHUB_OUTPUT, `results=${results.join(",")}\nbusinessId=${businessId}\nbusinessVersion=${businessVersion}`);
-          ' 
+            fs.appendFileSync(process.env.GITHUB_OUTPUT, `results=${results.join(",")}\nbusinessApp=${businessApp}\nbusinessVersion=${businessVersion}`);
+          '
 
 
 
 
-      - uses: veracode/safe-to-deploy@feature/pr-safe2deploy
+      - uses: veracode/safe-to-deploy@STA-1788
         id: safe-to-deploy
         with:
           vid: ${{ secrets.VERACODE_API_ID }}
           vkey: ${{ secrets.VERACODE_API_KEY }}
           github_token: ${{ secrets.GITHUB_TOKEN }}
           repository: ${{ github.repository }}
-          businessId: ${{ steps.image-values.outputs.businessId }}
+          businessApp: ${{ steps.image-values.outputs.businessApp }}
           artifacts_list: ${{ steps.image-values.outputs.results }}
           businessVersion: ${{ steps.image-values.outputs.businessVersion }}
           decision_mode: enforcement   # or: observer
