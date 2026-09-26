@@ -2,9 +2,9 @@ businessApplication:
   name: stockroom-app
   version: 1.4.1
   assets:
-     - name: stockroom-org/stockroom-frontend
+     - name: stockroom-org1/stockroom-frontend
        tag: v0.0.2
 
-     - name: stockroom-org/stockroom-api
+     - name: stockroom-org1/stockroom-api
        tag: v0.0.2
 
