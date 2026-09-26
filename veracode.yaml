@@ -5,6 +5,4 @@ businessApplication:
      - name: stockroom-org1/stockroom-frontend
        tag: v0.0.2
 
-     - name: stockroom-org1/stockroom-api
-       tag: v0.0.2
 
