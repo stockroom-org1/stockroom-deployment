@@ -37,7 +37,7 @@ jobs:
 
 
 
-      - uses: veracode/safe-to-deploy@feature/STA-1788
+      - uses: veracode/safe-to-deploy@STA-1788
         id: safe-to-deploy
         with:
           vid: ${{ secrets.VERACODE_API_ID }}
