@@ -3,7 +3,7 @@ businessApplication:
   version: 1.4.1
   assets:
      - name: stockroom-org1/stockroom-frontend
-       tag: v0.0.4
+       commitHash: 5c125dc793dd5d92388bbe7c00410d945fd535ec
 
      - name: stockroom-org1/stockroom-api
        tag: v0.0.2
