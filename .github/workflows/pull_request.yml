@@ -39,7 +39,7 @@ jobs:
 
 
 
-      - uses: veracode/safe-to-deploy@STA-1788
+      - uses: stockroom-org1/safe-to-deploy@main
         id: safe-to-deploy
         with:
           vid: ${{ secrets.VERACODE_API_ID }}
