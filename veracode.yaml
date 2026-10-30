@@ -3,8 +3,8 @@ businessApplication:
   version: 1.4.1
   assets:
      - name: stockroom-org1/stockroom-frontend
-       commitHash: 9a67be7166ad378f423dd7b3b41a1bdb4dfdb65d
+       commitHash: b2486550ca334db81f81053a66fee687324de7bb
 
-     - name: stockroom-org1/stockroom-api
-       tag: v0.0.2
+     - name: stockroom-org1/stockroom-backend
+       commitHash: 7fea1dc1c89b77863d73f440f640b8220aa6faee
 
