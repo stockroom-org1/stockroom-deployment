@@ -30,16 +30,17 @@ jobs:
             const businessApp = data.businessApplication.uuid || data.businessApplication.name;
             const businessVersion = data.businessApplication.version;
 
-            const stockroomFrontend = `${data.businessApplication.assets[0].name}@${data.businessApplication.assets[0].commitHash || data.businessApplication.assets[0].tag}`; ;
+            const stockroomFrontend = `${data.businessApplication.assets[0].name}@${data.businessApplication.assets[0].commitHash || data.businessApplication.assets[0].tag}`;
+            const stockroomApi = `${data.businessApplication.assets[1].name}@${data.businessApplication.assets[1].commitHash || data.businessApplication.assets[1].tag}`;
             
-            const results = [stockroomFrontend];
+            const results = [stockroomFrontend, stockroomApi];
             fs.appendFileSync(process.env.GITHUB_OUTPUT, `results=${results.join(",")}\nbusinessApp=${businessApp}\nbusinessVersion=${businessVersion}`);
           '
 
 
 
 
-      - uses: veracode/safe-to-deploy@STA-1788
+      - uses: veracode/safe-to-deploy@bugfix/STA-2144 
         id: safe-to-deploy
         with:
           vid: ${{ secrets.VERACODE_API_ID }}
