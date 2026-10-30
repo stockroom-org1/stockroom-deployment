@@ -33,7 +33,7 @@ jobs:
             const stockroomFrontend = `${data.businessApplication.assets[0].name}@${data.businessApplication.assets[0].commitHash || data.businessApplication.assets[0].tag}`;
             const stockroomApi = `${data.businessApplication.assets[1].name}@${data.businessApplication.assets[1].commitHash || data.businessApplication.assets[1].tag}`;
             
-            const results = [stockroomFrontend, stockroomApi];
+            const results = [stockroomApi];
             fs.appendFileSync(process.env.GITHUB_OUTPUT, `results=${results.join(",")}\nbusinessApp=${businessApp}\nbusinessVersion=${businessVersion}`);
           '
 
