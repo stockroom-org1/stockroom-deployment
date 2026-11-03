@@ -50,7 +50,7 @@ jobs:
           businessApp: ${{ steps.image-values.outputs.businessApp }}
           artifacts_list: ${{ steps.image-values.outputs.results }}
           businessVersion: ${{ steps.image-values.outputs.businessVersion }}
-          decision_mode: observer   # or: observer enforcement
+          decision_mode: enforcement
           repository_owner: ${{ github.repository_owner }}
           repository_name: ${{ github.event.repository.name }}
           source_branch: ${{ github.head_ref }}
