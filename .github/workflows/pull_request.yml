@@ -33,7 +33,7 @@ jobs:
             const stockroomFrontend = `${data.businessApplication.assets[0].name}@${data.businessApplication.assets[0].commitHash || data.businessApplication.assets[0].tag}`;
             const stockroomApi = `${data.businessApplication.assets[1].name}@${data.businessApplication.assets[1].commitHash || data.businessApplication.assets[1].tag}`;
             
-            const results = [stockroomFrontend, stockroomApi];
+            const results = [stockroomFrontend];
             fs.appendFileSync(process.env.GITHUB_OUTPUT, `results=${results.join(",")}\nbusinessApp=${businessApp}\nbusinessVersion=${businessVersion}`);
           '
 
@@ -50,7 +50,7 @@ jobs:
           businessApp: ${{ steps.image-values.outputs.businessApp }}
           artifacts_list: ${{ steps.image-values.outputs.results }}
           businessVersion: ${{ steps.image-values.outputs.businessVersion }}
-          decision_mode: enforcement   # or: observer
+          decision_mode: enforcement
           repository_owner: ${{ github.repository_owner }}
           repository_name: ${{ github.event.repository.name }}
           source_branch: ${{ github.head_ref }}
